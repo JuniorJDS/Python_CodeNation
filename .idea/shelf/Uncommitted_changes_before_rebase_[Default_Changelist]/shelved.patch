@@ -1,0 +1,1253 @@
+Index: ../data-science-0/main.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n \"cells\": [\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"# Desafio 1\\n\",\r\n    \"\\n\",\r\n    \"Para esse desafio, vamos trabalhar com o data set [Black Friday](https://www.kaggle.com/mehdidag/black-friday), que reúne dados sobre transações de compras em uma loja de varejo.\\n\",\r\n    \"\\n\",\r\n    \"Vamos utilizá-lo para praticar a exploração de data sets utilizando pandas. Você pode fazer toda análise neste mesmo notebook, mas as resposta devem estar nos locais indicados.\\n\",\r\n    \"\\n\",\r\n    \"> Obs.: Por favor, não modifique o nome das funções de resposta.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## _Set up_ da análise\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 19,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"import pandas as pd\\n\",\r\n    \"import numpy as np\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 20,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"black_friday = pd.read_csv(\\\"black_friday.csv\\\")\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 21,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>User_ID</th>\\n\",\r\n       \"      <th>Product_ID</th>\\n\",\r\n       \"      <th>Gender</th>\\n\",\r\n       \"      <th>Age</th>\\n\",\r\n       \"      <th>Occupation</th>\\n\",\r\n       \"      <th>City_Category</th>\\n\",\r\n       \"      <th>Stay_In_Current_City_Years</th>\\n\",\r\n       \"      <th>Marital_Status</th>\\n\",\r\n       \"      <th>Product_Category_1</th>\\n\",\r\n       \"      <th>Product_Category_2</th>\\n\",\r\n       \"      <th>Product_Category_3</th>\\n\",\r\n       \"      <th>Purchase</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00069042</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>3</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>8370</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00248942</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>1</td>\\n\",\r\n       \"      <td>6.0</td>\\n\",\r\n       \"      <td>14.0</td>\\n\",\r\n       \"      <td>15200</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00087842</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>12</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>1422</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00085442</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>12</td>\\n\",\r\n       \"      <td>14.0</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>1057</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>1000002</td>\\n\",\r\n       \"      <td>P00285442</td>\\n\",\r\n       \"      <td>M</td>\\n\",\r\n       \"      <td>55+</td>\\n\",\r\n       \"      <td>16</td>\\n\",\r\n       \"      <td>C</td>\\n\",\r\n       \"      <td>4+</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>8</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>7969</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"   User_ID Product_ID Gender   Age  Occupation City_Category  \\\\\\n\",\r\n       \"0  1000001  P00069042      F  0-17          10             A   \\n\",\r\n       \"1  1000001  P00248942      F  0-17          10             A   \\n\",\r\n       \"2  1000001  P00087842      F  0-17          10             A   \\n\",\r\n       \"3  1000001  P00085442      F  0-17          10             A   \\n\",\r\n       \"4  1000002  P00285442      M   55+          16             C   \\n\",\r\n       \"\\n\",\r\n       \"  Stay_In_Current_City_Years  Marital_Status  Product_Category_1  \\\\\\n\",\r\n       \"0                          2               0                   3   \\n\",\r\n       \"1                          2               0                   1   \\n\",\r\n       \"2                          2               0                  12   \\n\",\r\n       \"3                          2               0                  12   \\n\",\r\n       \"4                         4+               0                   8   \\n\",\r\n       \"\\n\",\r\n       \"   Product_Category_2  Product_Category_3  Purchase  \\n\",\r\n       \"0                 NaN                 NaN      8370  \\n\",\r\n       \"1                 6.0                14.0     15200  \\n\",\r\n       \"2                 NaN                 NaN      1422  \\n\",\r\n       \"3                14.0                 NaN      1057  \\n\",\r\n       \"4                 NaN                 NaN      7969  \"\r\n      ]\r\n     },\r\n     \"execution_count\": 21,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"black_friday.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 22,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"User_ID                            0\\n\",\r\n       \"Product_ID                         0\\n\",\r\n       \"Gender                             0\\n\",\r\n       \"Age                                0\\n\",\r\n       \"Occupation                         0\\n\",\r\n       \"City_Category                      0\\n\",\r\n       \"Stay_In_Current_City_Years         0\\n\",\r\n       \"Marital_Status                     0\\n\",\r\n       \"Product_Category_1                 0\\n\",\r\n       \"Product_Category_2            166986\\n\",\r\n       \"Product_Category_3            373299\\n\",\r\n       \"Purchase                           0\\n\",\r\n       \"dtype: int64\"\r\n      ]\r\n     },\r\n     \"execution_count\": 22,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"black_friday.isna().sum()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 1\\n\",\r\n    \"\\n\",\r\n    \"Quantas observações e quantas colunas há no dataset? Responda no formato de uma tuple `(n_observacoes, n_colunas)`.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 23,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q1():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 1.\\n\",\r\n    \"    return black_friday.shape\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 2\\n\",\r\n    \"\\n\",\r\n    \"Há quantas mulheres com idade entre 26 e 35 anos no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 24,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q2():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 2.\\n\",\r\n    \"    return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 3\\n\",\r\n    \"\\n\",\r\n    \"Quantos usuários únicos há no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 25,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q3():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 3.\\n\",\r\n    \"    return black_friday.User_ID.nunique()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 4\\n\",\r\n    \"\\n\",\r\n    \"Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 26,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q4():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 4.\\n\",\r\n    \"    return black_friday.dtypes.nunique()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 5\\n\",\r\n    \"\\n\",\r\n    \"Qual porcentagem dos registros possui ao menos um valor null (`None`, `ǸaN` etc)? Responda como um único escalar entre 0 e 1.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 27,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 5.\\n\",\r\n    \"    return float(black_friday.isna().any(axis=1).sum()/len(black_friday))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    return float(black_friday[black_friday.isna().any(axis=1) == True].shape[0]/black_friday.shape[0])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 6\\n\",\r\n    \"\\n\",\r\n    \"Quantos valores null existem na variável (coluna) com o maior número de null? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 28,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q6():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 6.\\n\",\r\n    \"    return black_friday.isna().sum().max()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 7\\n\",\r\n    \"\\n\",\r\n    \"Qual o valor mais frequente (sem contar nulls) em `Product_Category_3`? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 29,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q7():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 7.\\n\",\r\n    \"    return black_friday.Product_Category_3.value_counts().idxmax()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 8\\n\",\r\n    \"\\n\",\r\n    \"Qual a nova média da variável (coluna) `Purchase` após sua normalização? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 30,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q8():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 8.\\n\",\r\n    \"    Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-\\n\",\r\n    \"                                                                          black_friday.Purchase.min())\\n\",\r\n    \"    return Purch_norm.mean()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 9\\n\",\r\n    \"\\n\",\r\n    \"Quantas ocorrências entre -1 e 1 inclusive existem da variáel `Purchase` após sua padronização? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 31,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q9():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 9.\\n\",\r\n    \"    black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()\\n\",\r\n    \"    return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 10\\n\",\r\n    \"\\n\",\r\n    \"Podemos afirmar que se uma observação é null em `Product_Category_2` ela também o é em `Product_Category_3`? Responda com um bool (`True`, `False`).\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 32,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q10():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 10.\\n\",\r\n    \"    product_Data = black_friday[['Product_Category_2', 'Product_Category_3']]\\n\",\r\n    \"    product_Data = product_Data[product_Data.Product_Category_2.isna()==True]\\n\",\r\n    \"    cat_2 = product_Data.Product_Category_2.isna().sum()\\n\",\r\n    \"    cat_3 = product_Data.Product_Category_3.isna().sum()\\n\",\r\n    \"    if cat_2 == cat_3:\\n\",\r\n    \"        return True\\n\",\r\n    \"    else:\\n\",\r\n    \"        return False\\n\",\r\n    \"    \\n\",\r\n    \"    pass\"\r\n   ]\r\n  }\r\n ],\r\n \"metadata\": {\r\n  \"kernelspec\": {\r\n   \"display_name\": \"Python 3\",\r\n   \"language\": \"python\",\r\n   \"name\": \"python3\"\r\n  },\r\n  \"language_info\": {\r\n   \"codemirror_mode\": {\r\n    \"name\": \"ipython\",\r\n    \"version\": 3\r\n   },\r\n   \"file_extension\": \".py\",\r\n   \"mimetype\": \"text/x-python\",\r\n   \"name\": \"python\",\r\n   \"nbconvert_exporter\": \"python\",\r\n   \"pygments_lexer\": \"ipython3\",\r\n   \"version\": \"3.7.6\"\r\n  }\r\n },\r\n \"nbformat\": 4,\r\n \"nbformat_minor\": 2\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-0/main.ipynb	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-0/main.ipynb	(date 1589050812523)
+@@ -22,7 +22,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 19,
++   "execution_count": 1,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -32,7 +32,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 20,
++   "execution_count": 2,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -48,7 +48,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 21,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -189,7 +189,7 @@
+        "4                 NaN                 NaN      7969  "
+       ]
+      },
+-     "execution_count": 21,
++     "execution_count": 3,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -200,7 +200,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 22,
++   "execution_count": 4,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -221,7 +221,7 @@
+        "dtype: int64"
+       ]
+      },
+-     "execution_count": 22,
++     "execution_count": 4,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -241,14 +241,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 23,
++   "execution_count": 5,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q1():\n",
+     "    # Retorne aqui o resultado da questão 1.\n",
+     "    return black_friday.shape\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -262,14 +262,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 24,
++   "execution_count": 6,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q2():\n",
+     "    # Retorne aqui o resultado da questão 2.\n",
+     "    return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -283,14 +283,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 25,
++   "execution_count": 7,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q3():\n",
+     "    # Retorne aqui o resultado da questão 3.\n",
+     "    return black_friday.User_ID.nunique()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -304,14 +304,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 26,
++   "execution_count": 8,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q4():\n",
+     "    # Retorne aqui o resultado da questão 4.\n",
+     "    return black_friday.dtypes.nunique()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -325,14 +325,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 27,
++   "execution_count": 9,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q5():\n",
+     "    # Retorne aqui o resultado da questão 5.\n",
+     "    return float(black_friday.isna().any(axis=1).sum()/len(black_friday))\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -355,14 +355,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 28,
++   "execution_count": 10,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q6():\n",
+     "    # Retorne aqui o resultado da questão 6.\n",
+     "    return black_friday.isna().sum().max()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -376,14 +376,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 29,
++   "execution_count": 11,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q7():\n",
+     "    # Retorne aqui o resultado da questão 7.\n",
+     "    return black_friday.Product_Category_3.value_counts().idxmax()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -397,7 +397,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 30,
++   "execution_count": 12,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -406,7 +406,7 @@
+     "    Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-\n",
+     "                                                                          black_friday.Purchase.min())\n",
+     "    return Purch_norm.mean()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -420,7 +420,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 31,
++   "execution_count": 13,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -428,7 +428,7 @@
+     "    # Retorne aqui o resultado da questão 9.\n",
+     "    black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()\n",
+     "    return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -442,7 +442,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 32,
++   "execution_count": 14,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -457,7 +457,7 @@
+     "    else:\n",
+     "        return False\n",
+     "    \n",
+-    "    pass"
++    "    "
+    ]
+   }
+  ],
+Index: ../data-science-0/output.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites><testsuite errors=\"0\" failures=\"0\" hostname=\"DESKTOP-7GSFOHC\" name=\"pytest\" skipped=\"0\" tests=\"10\" time=\"1.041\" timestamp=\"2020-05-09T14:12:48.686219\"><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"3\" name=\"test_q1\" time=\"0.001\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"9\" name=\"test_q2\" time=\"0.054\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"15\" name=\"test_q3\" time=\"0.008\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"21\" name=\"test_q4\" time=\"0.000\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"27\" name=\"test_q5\" time=\"0.083\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"33\" name=\"test_q6\" time=\"0.087\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"39\" name=\"test_q7\" time=\"0.007\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"45\" name=\"test_q8\" time=\"0.016\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"51\" name=\"test_q9\" time=\"0.061\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"57\" name=\"test_q10\" time=\"0.013\"></testcase></testsuite></testsuites>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-0/output.xml	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-0/output.xml	(date 1589050973212)
+@@ -1,1 +1,1 @@
+-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-7GSFOHC" name="pytest" skipped="0" tests="10" time="1.041" timestamp="2020-05-09T14:12:48.686219"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.001"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.054"></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.008"></testcase><testcase classname="test_submit" file="test_submit.py" line="21" name="test_q4" time="0.000"></testcase><testcase classname="test_submit" file="test_submit.py" line="27" name="test_q5" time="0.083"></testcase><testcase classname="test_submit" file="test_submit.py" line="33" name="test_q6" time="0.087"></testcase><testcase classname="test_submit" file="test_submit.py" line="39" name="test_q7" time="0.007"></testcase><testcase classname="test_submit" file="test_submit.py" line="45" name="test_q8" time="0.016"></testcase><testcase classname="test_submit" file="test_submit.py" line="51" name="test_q9" time="0.061"></testcase><testcase classname="test_submit" file="test_submit.py" line="57" name="test_q10" time="0.013"></testcase></testsuite></testsuites>
+\ No newline at end of file
++<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-7GSFOHC" name="pytest" skipped="0" tests="10" time="1.959" timestamp="2020-05-09T16:02:51.253500"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.001"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.084"></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.079"></testcase><testcase classname="test_submit" file="test_submit.py" line="21" name="test_q4" time="0.004"></testcase><testcase classname="test_submit" file="test_submit.py" line="27" name="test_q5" time="0.128"></testcase><testcase classname="test_submit" file="test_submit.py" line="33" name="test_q6" time="0.086"></testcase><testcase classname="test_submit" file="test_submit.py" line="39" name="test_q7" time="0.010"></testcase><testcase classname="test_submit" file="test_submit.py" line="45" name="test_q8" time="0.350"></testcase><testcase classname="test_submit" file="test_submit.py" line="51" name="test_q9" time="0.074"></testcase><testcase classname="test_submit" file="test_submit.py" line="57" name="test_q10" time="0.012"></testcase></testsuite></testsuites>
+\ No newline at end of file
+Index: ../data-science-0/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/env python\r\n# coding: utf-8\r\n\r\n# # Desafio 1\r\n# \r\n# Para esse desafio, vamos trabalhar com o data set [Black Friday](https://www.kaggle.com/mehdidag/black-friday), que reúne dados sobre transações de compras em uma loja de varejo.\r\n# \r\n# Vamos utilizá-lo para praticar a exploração de data sets utilizando pandas. Você pode fazer toda análise neste mesmo notebook, mas as resposta devem estar nos locais indicados.\r\n# \r\n# > Obs.: Por favor, não modifique o nome das funções de resposta.\r\n\r\n# ## _Set up_ da análise\r\n\r\n# In[1]:\r\n\r\n\r\nimport pandas as pd\r\nimport numpy as np\r\n\r\n\r\n# In[2]:\r\n\r\n\r\nblack_friday = pd.read_csv(\"black_friday.csv\")\r\n\r\n\r\n# ## Inicie sua análise a partir daqui\r\n\r\n# In[3]:\r\n\r\n\r\nblack_friday.head()\r\n\r\n\r\n# In[4]:\r\n\r\n\r\nblack_friday.isna().sum()\r\n\r\n\r\n# ## Questão 1\r\n# \r\n# Quantas observações e quantas colunas há no dataset? Responda no formato de uma tuple `(n_observacoes, n_colunas)`.\r\n\r\n# In[5]:\r\n\r\n\r\ndef q1():\r\n    # Retorne aqui o resultado da questão 1.\r\n    return black_friday.shape\r\n    pass\r\n\r\n\r\n# ## Questão 2\r\n# \r\n# Há quantas mulheres com idade entre 26 e 35 anos no dataset? Responda como um único escalar.\r\n\r\n# In[6]:\r\n\r\n\r\ndef q2():\r\n    # Retorne aqui o resultado da questão 2.\r\n    return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])\r\n    pass\r\n\r\n\r\n# ## Questão 3\r\n# \r\n# Quantos usuários únicos há no dataset? Responda como um único escalar.\r\n\r\n# In[7]:\r\n\r\n\r\ndef q3():\r\n    # Retorne aqui o resultado da questão 3.\r\n    return black_friday.User_ID.nunique()\r\n    pass\r\n\r\n\r\n# ## Questão 4\r\n# \r\n# Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.\r\n\r\n# In[8]:\r\n\r\n\r\ndef q4():\r\n    # Retorne aqui o resultado da questão 4.\r\n    return black_friday.dtypes.nunique()\r\n    pass\r\n\r\n\r\n# ## Questão 5\r\n# \r\n# Qual porcentagem dos registros possui ao menos um valor null (`None`, `ǸaN` etc)? Responda como um único escalar entre 0 e 1.\r\n\r\n# In[9]:\r\n\r\n\r\ndef q5():\r\n    # Retorne aqui o resultado da questão 5.\r\n    return float(black_friday.isna().any(axis=1).sum()/len(black_friday))\r\n    pass\r\n\r\n\r\n# def q5():\r\n#     return float(black_friday[black_friday.isna().any(axis=1) == True].shape[0]/black_friday.shape[0])\r\n#     pass\r\n\r\n# ## Questão 6\r\n# \r\n# Quantos valores null existem na variável (coluna) com o maior número de null? Responda como um único escalar.\r\n\r\n# In[10]:\r\n\r\n\r\ndef q6():\r\n    # Retorne aqui o resultado da questão 6.\r\n    return black_friday.isna().sum().max()\r\n    pass\r\n\r\n\r\n# ## Questão 7\r\n# \r\n# Qual o valor mais frequente (sem contar nulls) em `Product_Category_3`? Responda como um único escalar.\r\n\r\n# In[11]:\r\n\r\n\r\ndef q7():\r\n    # Retorne aqui o resultado da questão 7.\r\n    return black_friday.Product_Category_3.value_counts().idxmax()\r\n    pass\r\n\r\n\r\n# ## Questão 8\r\n# \r\n# Qual a nova média da variável (coluna) `Purchase` após sua normalização? Responda como um único escalar.\r\n\r\n# In[12]:\r\n\r\n\r\ndef q8():\r\n    # Retorne aqui o resultado da questão 8.\r\n    Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-\r\n                                                                          black_friday.Purchase.min())\r\n    return Purch_norm.mean()\r\n    pass\r\n\r\n\r\n# ## Questão 9\r\n# \r\n# Quantas ocorrências entre -1 e 1 inclusive existem da variáel `Purchase` após sua padronização? Responda como um único escalar.\r\n\r\n# In[13]:\r\n\r\n\r\ndef q9():\r\n    # Retorne aqui o resultado da questão 9.\r\n    black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()\r\n    return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])\r\n    pass\r\n\r\n\r\n# ## Questão 10\r\n# \r\n# Podemos afirmar que se uma observação é null em `Product_Category_2` ela também o é em `Product_Category_3`? Responda com um bool (`True`, `False`).\r\n\r\n# In[14]:\r\n\r\n\r\ndef q10():\r\n    # Retorne aqui o resultado da questão 10.\r\n    product_Data = black_friday[['Product_Category_2', 'Product_Category_3']]\r\n    product_Data = product_Data[product_Data.Product_Category_2.isna()==True]\r\n    cat_2 = product_Data.Product_Category_2.isna().sum()\r\n    cat_3 = product_Data.Product_Category_3.isna().sum()\r\n    if cat_2 == cat_3:\r\n        return True\r\n    else:\r\n        return False\r\n    \r\n    pass\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-0/main.py	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-0/main.py	(date 1589050964471)
+@@ -48,7 +48,7 @@
+ def q1():
+     # Retorne aqui o resultado da questão 1.
+     return black_friday.shape
+-    pass
++    
+ 
+ 
+ # ## Questão 2
+@@ -61,7 +61,7 @@
+ def q2():
+     # Retorne aqui o resultado da questão 2.
+     return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])
+-    pass
++    
+ 
+ 
+ # ## Questão 3
+@@ -74,7 +74,7 @@
+ def q3():
+     # Retorne aqui o resultado da questão 3.
+     return black_friday.User_ID.nunique()
+-    pass
++    
+ 
+ 
+ # ## Questão 4
+@@ -87,7 +87,7 @@
+ def q4():
+     # Retorne aqui o resultado da questão 4.
+     return black_friday.dtypes.nunique()
+-    pass
++    
+ 
+ 
+ # ## Questão 5
+@@ -100,7 +100,7 @@
+ def q5():
+     # Retorne aqui o resultado da questão 5.
+     return float(black_friday.isna().any(axis=1).sum()/len(black_friday))
+-    pass
++    
+ 
+ 
+ # def q5():
+@@ -117,7 +117,7 @@
+ def q6():
+     # Retorne aqui o resultado da questão 6.
+     return black_friday.isna().sum().max()
+-    pass
++    
+ 
+ 
+ # ## Questão 7
+@@ -130,7 +130,7 @@
+ def q7():
+     # Retorne aqui o resultado da questão 7.
+     return black_friday.Product_Category_3.value_counts().idxmax()
+-    pass
++    
+ 
+ 
+ # ## Questão 8
+@@ -145,7 +145,7 @@
+     Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-
+                                                                           black_friday.Purchase.min())
+     return Purch_norm.mean()
+-    pass
++    
+ 
+ 
+ # ## Questão 9
+@@ -159,7 +159,7 @@
+     # Retorne aqui o resultado da questão 9.
+     black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()
+     return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])
+-    pass
++    
+ 
+ 
+ # ## Questão 10
+@@ -180,5 +180,5 @@
+     else:
+         return False
+     
+-    pass
++    
+ 
+Index: ../data-science-0/stdout.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>============================= test session starts =============================\r\nplatform win32 -- Python 3.7.6, pytest-5.3.5, py-1.8.1, pluggy-0.13.1 -- E:\\Junior\\Anaconda\\python.exe\r\ncachedir: .pytest_cache\r\nhypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('C:\\\\Users\\\\Junior\\\\codenation\\\\data-science-0\\\\.hypothesis\\\\examples')\r\nrootdir: C:\\Users\\Junior\\codenation\\data-science-0\r\nplugins: hypothesis-5.5.4, arraydiff-0.3, astropy-header-0.1.2, doctestplus-0.5.0, openfiles-0.4.0, remotedata-0.3.2\r\ncollecting ... collected 10 items\r\n\r\ntest_submit.py::test_q1 PASSED                                           [ 10%]\r\ntest_submit.py::test_q2 PASSED                                           [ 20%]\r\ntest_submit.py::test_q3 PASSED                                           [ 30%]\r\ntest_submit.py::test_q4 PASSED                                           [ 40%]\r\ntest_submit.py::test_q5 PASSED                                           [ 50%]\r\ntest_submit.py::test_q6 PASSED                                           [ 60%]\r\ntest_submit.py::test_q7 PASSED                                           [ 70%]\r\ntest_submit.py::test_q8 PASSED                                           [ 80%]\r\ntest_submit.py::test_q9 PASSED                                           [ 90%]\r\ntest_submit.py::test_q10 PASSED                                          [100%]\r\n\r\n============================== warnings summary ===============================\r\nE:\\Junior\\Anaconda\\lib\\site-packages\\_pytest\\junitxml.py:436\r\n  E:\\Junior\\Anaconda\\lib\\site-packages\\_pytest\\junitxml.py:436: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0.\r\n  Add 'junit_family=xunit1' to your pytest.ini file to keep the current format in future versions of pytest and silence this warning.\r\n    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)\r\n\r\n-- Docs: https://docs.pytest.org/en/latest/warnings.html\r\n-- generated xml file: C:\\Users\\Junior\\codenation\\data-science-0\\output.xml ---\r\n======================== 10 passed, 1 warning in 1.04s ========================\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-0/stdout.txt	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-0/stdout.txt	(date 1589050973325)
+@@ -25,4 +25,4 @@
+ 
+ -- Docs: https://docs.pytest.org/en/latest/warnings.html
+ -- generated xml file: C:\Users\Junior\codenation\data-science-0\output.xml ---
+-======================== 10 passed, 1 warning in 1.04s ========================
++======================== 10 passed, 1 warning in 1.95s ========================
+Index: ../data-science-1/.ipynb_checkpoints/main-checkpoint.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n \"cells\": [\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"# Desafio 3\\n\",\r\n    \"\\n\",\r\n    \"Neste desafio, iremos praticar nossos conhecimentos sobre distribuições de probabilidade. Para isso,\\n\",\r\n    \"dividiremos este desafio em duas partes:\\n\",\r\n    \"    \\n\",\r\n    \"1. A primeira parte contará com 3 questões sobre um *data set* artificial com dados de uma amostra normal e\\n\",\r\n    \"    uma binomial.\\n\",\r\n    \"2. A segunda parte será sobre a análise da distribuição de uma variável do _data set_ [Pulsar Star](https://archive.ics.uci.edu/ml/datasets/HTRU2), contendo 2 questões.\\n\",\r\n    \"\\n\",\r\n    \"> Obs.: Por favor, não modifique o nome das funções de resposta.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## _Setup_ geral\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 15,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"import pandas as pd\\n\",\r\n    \"import matplotlib.pyplot as plt\\n\",\r\n    \"import numpy as np\\n\",\r\n    \"import scipy.stats as sct\\n\",\r\n    \"import seaborn as sns\\n\",\r\n    \"from statsmodels.distributions.empirical_distribution import ECDF\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 16,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"#%matplotlib inline\\n\",\r\n    \"\\n\",\r\n    \"from IPython.core.pylabtools import figsize\\n\",\r\n    \"\\n\",\r\n    \"\\n\",\r\n    \"figsize(12, 8)\\n\",\r\n    \"\\n\",\r\n    \"sns.set()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Parte 1\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"### _Setup_ da parte 1\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 17,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"np.random.seed(42)\\n\",\r\n    \"    \\n\",\r\n    \"dataframe = pd.DataFrame({\\\"normal\\\": sct.norm.rvs(20, 4, size=10000),\\n\",\r\n    \"                     \\\"binomial\\\": sct.binom.rvs(100, 0.2, size=10000)})\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise a partir da parte 1 a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 18,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>normal</th>\\n\",\r\n       \"      <th>binomial</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>21.986857</td>\\n\",\r\n       \"      <td>18</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>19.446943</td>\\n\",\r\n       \"      <td>15</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>22.590754</td>\\n\",\r\n       \"      <td>14</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>26.092119</td>\\n\",\r\n       \"      <td>15</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>19.063387</td>\\n\",\r\n       \"      <td>21</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"      normal  binomial\\n\",\r\n       \"0  21.986857        18\\n\",\r\n       \"1  19.446943        15\\n\",\r\n       \"2  22.590754        14\\n\",\r\n       \"3  26.092119        15\\n\",\r\n       \"4  19.063387        21\"\r\n      ]\r\n     },\r\n     \"execution_count\": 18,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"# Sua análise da parte 1 começa aqui.\\n\",\r\n    \"dataframe.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 1\\n\",\r\n    \"\\n\",\r\n    \"Qual a diferença entre os quartis (Q1, Q2 e Q3) das variáveis `normal` e `binomial` de `dataframe`? Responda como uma tupla de três elementos arredondados para três casas decimais.\\n\",\r\n    \"\\n\",\r\n    \"Em outra palavras, sejam `q1_norm`, `q2_norm` e `q3_norm` os quantis da variável `normal` e `q1_binom`, `q2_binom` e `q3_binom` os quantis da variável `binom`, qual a diferença `(q1_norm - q1 binom, q2_norm - q2_binom, q3_norm - q3_binom)`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 19,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q1():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 1.\\n\",\r\n    \"    quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])\\n\",\r\n    \"    quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])\\n\",\r\n    \"    return tuple((quartis_norm - quartis_binom).round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 20,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.31, -0.01, -0.316)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 20,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q1()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Você esperava valores dessa magnitude?\\n\",\r\n    \"\\n\",\r\n    \"* Você é capaz de explicar como distribuições aparentemente tão diferentes (discreta e contínua, por exemplo) conseguem dar esses valores?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 2\\n\",\r\n    \"\\n\",\r\n    \"Considere o intervalo $[\\\\bar{x} - s, \\\\bar{x} + s]$, onde $\\\\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 29,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q2():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 2.\\n\",\r\n    \"    ecdf = ECDF(dataframe.normal)\\n\",\r\n    \"\\n\",\r\n    \"    media = dataframe.normal.mean()\\n\",\r\n    \"    dev_padrao = dataframe.normal.std()\\n\",\r\n    \"\\n\",\r\n    \"    min_value = media - dev_padrao\\n\",\r\n    \"    max_value = media + dev_padrao\\n\",\r\n    \"\\n\",\r\n    \"    result = round(ecdf(max_value) - ecdf(min_value),3)\\n\",\r\n    \"    return float(result)\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Esse valor se aproxima do esperado teórico?\\n\",\r\n    \"* Experimente também para os intervalos $[\\\\bar{x} - 2s, \\\\bar{x} + 2s]$ e $[\\\\bar{x} - 3s, \\\\bar{x} + 3s]$.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 3\\n\",\r\n    \"\\n\",\r\n    \"Qual é a diferença entre as médias e as variâncias das variáveis `binomial` e `normal`? Responda como uma tupla de dois elementos arredondados para três casas decimais.\\n\",\r\n    \"\\n\",\r\n    \"Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 22,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q3():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 3.\\n\",\r\n    \"    media  = dataframe.binomial.mean() - dataframe.normal.mean()\\n\",\r\n    \"    varianc = dataframe.binomial.var() - dataframe.normal.var()\\n\",\r\n    \"    result = (round(media, 3), round(varianc,3))\\n\",\r\n    \"    return result\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 23,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.106, 0.22)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 23,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q3()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Você esperava valore dessa magnitude?\\n\",\r\n    \"* Qual o efeito de aumentar ou diminuir $n$ (atualmente 100) na distribuição da variável `binomial`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Parte 2\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"### _Setup_ da parte 2\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 24,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"stars = pd.read_csv(\\\"pulsar_stars.csv\\\")\\n\",\r\n    \"\\n\",\r\n    \"stars.rename({old_name: new_name\\n\",\r\n    \"              for (old_name, new_name)\\n\",\r\n    \"              in zip(stars.columns,\\n\",\r\n    \"                     [\\\"mean_profile\\\", \\\"sd_profile\\\", \\\"kurt_profile\\\", \\\"skew_profile\\\", \\\"mean_curve\\\", \\\"sd_curve\\\", \\\"kurt_curve\\\", \\\"skew_curve\\\", \\\"target\\\"])\\n\",\r\n    \"             },\\n\",\r\n    \"             axis=1, inplace=True)\\n\",\r\n    \"\\n\",\r\n    \"stars.loc[:, \\\"target\\\"] = stars.target.astype(bool)\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 25,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>mean_profile</th>\\n\",\r\n       \"      <th>sd_profile</th>\\n\",\r\n       \"      <th>kurt_profile</th>\\n\",\r\n       \"      <th>skew_profile</th>\\n\",\r\n       \"      <th>mean_curve</th>\\n\",\r\n       \"      <th>sd_curve</th>\\n\",\r\n       \"      <th>kurt_curve</th>\\n\",\r\n       \"      <th>skew_curve</th>\\n\",\r\n       \"      <th>target</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>102.507812</td>\\n\",\r\n       \"      <td>58.882430</td>\\n\",\r\n       \"      <td>0.465318</td>\\n\",\r\n       \"      <td>-0.515088</td>\\n\",\r\n       \"      <td>1.677258</td>\\n\",\r\n       \"      <td>14.860146</td>\\n\",\r\n       \"      <td>10.576487</td>\\n\",\r\n       \"      <td>127.393580</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>103.015625</td>\\n\",\r\n       \"      <td>39.341649</td>\\n\",\r\n       \"      <td>0.323328</td>\\n\",\r\n       \"      <td>1.051164</td>\\n\",\r\n       \"      <td>3.121237</td>\\n\",\r\n       \"      <td>21.744669</td>\\n\",\r\n       \"      <td>7.735822</td>\\n\",\r\n       \"      <td>63.171909</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>136.750000</td>\\n\",\r\n       \"      <td>57.178449</td>\\n\",\r\n       \"      <td>-0.068415</td>\\n\",\r\n       \"      <td>-0.636238</td>\\n\",\r\n       \"      <td>3.642977</td>\\n\",\r\n       \"      <td>20.959280</td>\\n\",\r\n       \"      <td>6.896499</td>\\n\",\r\n       \"      <td>53.593661</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>88.726562</td>\\n\",\r\n       \"      <td>40.672225</td>\\n\",\r\n       \"      <td>0.600866</td>\\n\",\r\n       \"      <td>1.123492</td>\\n\",\r\n       \"      <td>1.178930</td>\\n\",\r\n       \"      <td>11.468720</td>\\n\",\r\n       \"      <td>14.269573</td>\\n\",\r\n       \"      <td>252.567306</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>93.570312</td>\\n\",\r\n       \"      <td>46.698114</td>\\n\",\r\n       \"      <td>0.531905</td>\\n\",\r\n       \"      <td>0.416721</td>\\n\",\r\n       \"      <td>1.636288</td>\\n\",\r\n       \"      <td>14.545074</td>\\n\",\r\n       \"      <td>10.621748</td>\\n\",\r\n       \"      <td>131.394004</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"   mean_profile  sd_profile  kurt_profile  skew_profile  mean_curve  \\\\\\n\",\r\n       \"0    102.507812   58.882430      0.465318     -0.515088    1.677258   \\n\",\r\n       \"1    103.015625   39.341649      0.323328      1.051164    3.121237   \\n\",\r\n       \"2    136.750000   57.178449     -0.068415     -0.636238    3.642977   \\n\",\r\n       \"3     88.726562   40.672225      0.600866      1.123492    1.178930   \\n\",\r\n       \"4     93.570312   46.698114      0.531905      0.416721    1.636288   \\n\",\r\n       \"\\n\",\r\n       \"    sd_curve  kurt_curve  skew_curve  target  \\n\",\r\n       \"0  14.860146   10.576487  127.393580   False  \\n\",\r\n       \"1  21.744669    7.735822   63.171909   False  \\n\",\r\n       \"2  20.959280    6.896499   53.593661   False  \\n\",\r\n       \"3  11.468720   14.269573  252.567306   False  \\n\",\r\n       \"4  14.545074   10.621748  131.394004   False  \"\r\n      ]\r\n     },\r\n     \"execution_count\": 25,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"stars.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise da parte 2 a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 26,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"# Sua análise da parte 2 começa aqui.\\n\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 4\\n\",\r\n    \"\\n\",\r\n    \"Considerando a variável `mean_profile` de `stars`:\\n\",\r\n    \"\\n\",\r\n    \"1. Filtre apenas os valores de `mean_profile` onde `target == 0` (ou seja, onde a estrela não é um pulsar).\\n\",\r\n    \"2. Padronize a variável `mean_profile` filtrada anteriormente para ter média 0 e variância 1.\\n\",\r\n    \"\\n\",\r\n    \"Chamaremos a variável resultante de `false_pulsar_mean_profile_standardized`.\\n\",\r\n    \"\\n\",\r\n    \"Encontre os quantis teóricos para uma distribuição normal de média 0 e variância 1 para 0.80, 0.90 e 0.95 através da função `norm.ppf()` disponível em `scipy.stats`.\\n\",\r\n    \"\\n\",\r\n    \"Quais as probabilidade associadas a esses quantis utilizando a CDF empírica da variável `false_pulsar_mean_profile_standardized`? Responda como uma tupla de três elementos arredondados para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 27,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q4():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 4.\\n\",\r\n    \"    no_pulsar = stars.mean_profile[stars.target==0]\\n\",\r\n    \"    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\\n\",\r\n    \"    \\n\",\r\n    \"    #Quantis teoricos para 0.80, 0.90 e 0.95\\n\",\r\n    \"    norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)\\n\",\r\n    \"    #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais\\n\",\r\n    \"    ecdf = ECDF(false_pulsar_mean_profile_standardized)\\n\",\r\n    \"    return tuple(ecdf(norm).round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Os valores encontrados fazem sentido?\\n\",\r\n    \"* O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 5\\n\",\r\n    \"\\n\",\r\n    \"Qual a diferença entre os quantis Q1, Q2 e Q3 de `false_pulsar_mean_profile_standardized` e os mesmos quantis teóricos de uma distribuição normal de média 0 e variância 1? Responda como uma tupla de três elementos arredondados para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 31,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 5.\\n\",\r\n    \"    #Quartis teoricos de Q1, Q2 e Q3\\n\",\r\n    \"    teorico = sct.norm.ppf([0.25,0.5,0.75])\\n\",\r\n    \"    #Diferenca entre o dataframe padronizado e os quartis teoricos\\n\",\r\n    \"    no_pulsar = stars.mean_profile[stars.target==0]\\n\",\r\n    \"    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\\n\",\r\n    \"    result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico\\n\",\r\n    \"    return tuple(result.round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 32,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.027, 0.04, -0.004)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 32,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q5()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Os valores encontrados fazem sentido?\\n\",\r\n    \"* O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\\n\",\r\n    \"* Curiosidade: alguns testes de hipóteses sobre normalidade dos dados utilizam essa mesma abordagem.\"\r\n   ]\r\n  }\r\n ],\r\n \"metadata\": {\r\n  \"kernelspec\": {\r\n   \"display_name\": \"Python 3\",\r\n   \"language\": \"python\",\r\n   \"name\": \"python3\"\r\n  },\r\n  \"language_info\": {\r\n   \"codemirror_mode\": {\r\n    \"name\": \"ipython\",\r\n    \"version\": 3\r\n   },\r\n   \"file_extension\": \".py\",\r\n   \"mimetype\": \"text/x-python\",\r\n   \"name\": \"python\",\r\n   \"nbconvert_exporter\": \"python\",\r\n   \"pygments_lexer\": \"ipython3\",\r\n   \"version\": \"3.7.6\"\r\n  }\r\n },\r\n \"nbformat\": 4,\r\n \"nbformat_minor\": 2\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-1/.ipynb_checkpoints/main-checkpoint.ipynb	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-1/.ipynb_checkpoints/main-checkpoint.ipynb	(date 1589051680988)
+@@ -25,7 +25,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 15,
++   "execution_count": 1,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -39,7 +39,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 16,
++   "execution_count": 2,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -69,7 +69,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 17,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -88,7 +88,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 18,
++   "execution_count": 4,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -155,7 +155,7 @@
+        "4  19.063387        21"
+       ]
+      },
+-     "execution_count": 18,
++     "execution_count": 4,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -178,7 +178,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 19,
++   "execution_count": 5,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -186,13 +186,12 @@
+     "    # Retorne aqui o resultado da questão 1.\n",
+     "    quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])\n",
+     "    quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])\n",
+-    "    return tuple((quartis_norm - quartis_binom).round(3))\n",
+-    "    pass"
++    "    return tuple((quartis_norm - quartis_binom).round(3))"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 20,
++   "execution_count": 6,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -201,7 +200,7 @@
+        "(0.31, -0.01, -0.316)"
+       ]
+      },
+-     "execution_count": 20,
++     "execution_count": 6,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -232,7 +231,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 29,
++   "execution_count": 7,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -247,8 +246,7 @@
+     "    max_value = media + dev_padrao\n",
+     "\n",
+     "    result = round(ecdf(max_value) - ecdf(min_value),3)\n",
+-    "    return float(result)\n",
+-    "    pass"
++    "    return float(result)"
+    ]
+   },
+   {
+@@ -274,7 +272,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 22,
++   "execution_count": 8,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -283,13 +281,12 @@
+     "    media  = dataframe.binomial.mean() - dataframe.normal.mean()\n",
+     "    varianc = dataframe.binomial.var() - dataframe.normal.var()\n",
+     "    result = (round(media, 3), round(varianc,3))\n",
+-    "    return result\n",
+-    "    pass"
++    "    return result"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 23,
++   "execution_count": 9,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -298,7 +295,7 @@
+        "(0.106, 0.22)"
+       ]
+      },
+-     "execution_count": 23,
++     "execution_count": 9,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -333,7 +330,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 24,
++   "execution_count": 10,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -351,7 +348,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 25,
++   "execution_count": 11,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -467,7 +464,7 @@
+        "4  14.545074   10.621748  131.394004   False  "
+       ]
+      },
+-     "execution_count": 25,
++     "execution_count": 11,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -485,7 +482,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 26,
++   "execution_count": 12,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -512,21 +509,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 27,
++   "execution_count": 15,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q4():\n",
+     "    # Retorne aqui o resultado da questão 4.\n",
+     "    no_pulsar = stars.mean_profile[stars.target==0]\n",
+-    "    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
++    "    #false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
++    "    false_pulsar_mean_profile_standardized = sct.zscore(no_pulsar)\n",
+     "    \n",
+     "    #Quantis teoricos para 0.80, 0.90 e 0.95\n",
+     "    norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)\n",
+     "    #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais\n",
+     "    ecdf = ECDF(false_pulsar_mean_profile_standardized)\n",
+-    "    return tuple(ecdf(norm).round(3))\n",
+-    "    pass"
++    "    return tuple(ecdf(norm).round(3))"
+    ]
+   },
+   {
+@@ -562,8 +559,7 @@
+     "    no_pulsar = stars.mean_profile[stars.target==0]\n",
+     "    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
+     "    result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico\n",
+-    "    return tuple(result.round(3))\n",
+-    "    pass"
++    "    return tuple(result.round(3))"
+    ]
+   },
+   {
+Index: ../data-science-1/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/env python\r\n# coding: utf-8\r\n\r\n# # Desafio 3\r\n# \r\n# Neste desafio, iremos praticar nossos conhecimentos sobre distribuições de probabilidade. Para isso,\r\n# dividiremos este desafio em duas partes:\r\n#     \r\n# 1. A primeira parte contará com 3 questões sobre um *data set* artificial com dados de uma amostra normal e\r\n#     uma binomial.\r\n# 2. A segunda parte será sobre a análise da distribuição de uma variável do _data set_ [Pulsar Star](https://archive.ics.uci.edu/ml/datasets/HTRU2), contendo 2 questões.\r\n# \r\n# > Obs.: Por favor, não modifique o nome das funções de resposta.\r\n\r\n# ## _Setup_ geral\r\n\r\n# In[15]:\r\n\r\n\r\nimport pandas as pd\r\nimport matplotlib.pyplot as plt\r\nimport numpy as np\r\nimport scipy.stats as sct\r\nimport seaborn as sns\r\nfrom statsmodels.distributions.empirical_distribution import ECDF\r\n\r\n\r\n# In[16]:\r\n\r\n\r\n#%matplotlib inline\r\n\r\nfrom IPython.core.pylabtools import figsize\r\n\r\n\r\nfigsize(12, 8)\r\n\r\nsns.set()\r\n\r\n\r\n# ## Parte 1\r\n\r\n# ### _Setup_ da parte 1\r\n\r\n# In[17]:\r\n\r\n\r\nnp.random.seed(42)\r\n    \r\ndataframe = pd.DataFrame({\"normal\": sct.norm.rvs(20, 4, size=10000),\r\n                     \"binomial\": sct.binom.rvs(100, 0.2, size=10000)})\r\n\r\n\r\n# ## Inicie sua análise a partir da parte 1 a partir daqui\r\n\r\n# In[18]:\r\n\r\n\r\n# Sua análise da parte 1 começa aqui.\r\ndataframe.head()\r\n\r\n\r\n# ## Questão 1\r\n# \r\n# Qual a diferença entre os quartis (Q1, Q2 e Q3) das variáveis `normal` e `binomial` de `dataframe`? Responda como uma tupla de três elementos arredondados para três casas decimais.\r\n# \r\n# Em outra palavras, sejam `q1_norm`, `q2_norm` e `q3_norm` os quantis da variável `normal` e `q1_binom`, `q2_binom` e `q3_binom` os quantis da variável `binom`, qual a diferença `(q1_norm - q1 binom, q2_norm - q2_binom, q3_norm - q3_binom)`?\r\n\r\n# In[19]:\r\n\r\n\r\ndef q1():\r\n    # Retorne aqui o resultado da questão 1.\r\n    quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])\r\n    quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])\r\n    return tuple((quartis_norm - quartis_binom).round(3))\r\n    pass\r\n\r\n\r\n# In[20]:\r\n\r\n\r\nq1()\r\n\r\n\r\n# Para refletir:\r\n# \r\n# * Você esperava valores dessa magnitude?\r\n# \r\n# * Você é capaz de explicar como distribuições aparentemente tão diferentes (discreta e contínua, por exemplo) conseguem dar esses valores?\r\n\r\n# ## Questão 2\r\n# \r\n# Considere o intervalo $[\\bar{x} - s, \\bar{x} + s]$, onde $\\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.\r\n\r\n# In[29]:\r\n\r\n\r\ndef q2():\r\n    # Retorne aqui o resultado da questão 2.\r\n    ecdf = ECDF(dataframe.normal)\r\n\r\n    media = dataframe.normal.mean()\r\n    dev_padrao = dataframe.normal.std()\r\n\r\n    min_value = media - dev_padrao\r\n    max_value = media + dev_padrao\r\n\r\n    result = round(ecdf(max_value) - ecdf(min_value),3)\r\n    return float(result)\r\n    pass\r\n\r\n\r\n# Para refletir:\r\n# \r\n# * Esse valor se aproxima do esperado teórico?\r\n# * Experimente também para os intervalos $[\\bar{x} - 2s, \\bar{x} + 2s]$ e $[\\bar{x} - 3s, \\bar{x} + 3s]$.\r\n\r\n# ## Questão 3\r\n# \r\n# Qual é a diferença entre as médias e as variâncias das variáveis `binomial` e `normal`? Responda como uma tupla de dois elementos arredondados para três casas decimais.\r\n# \r\n# Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?\r\n\r\n# In[22]:\r\n\r\n\r\ndef q3():\r\n    # Retorne aqui o resultado da questão 3.\r\n    media  = dataframe.binomial.mean() - dataframe.normal.mean()\r\n    varianc = dataframe.binomial.var() - dataframe.normal.var()\r\n    result = (round(media, 3), round(varianc,3))\r\n    return result\r\n    pass\r\n\r\n\r\n# In[23]:\r\n\r\n\r\nq3()\r\n\r\n\r\n# Para refletir:\r\n# \r\n# * Você esperava valore dessa magnitude?\r\n# * Qual o efeito de aumentar ou diminuir $n$ (atualmente 100) na distribuição da variável `binomial`?\r\n\r\n# ## Parte 2\r\n\r\n# ### _Setup_ da parte 2\r\n\r\n# In[24]:\r\n\r\n\r\nstars = pd.read_csv(\"pulsar_stars.csv\")\r\n\r\nstars.rename({old_name: new_name\r\n              for (old_name, new_name)\r\n              in zip(stars.columns,\r\n                     [\"mean_profile\", \"sd_profile\", \"kurt_profile\", \"skew_profile\", \"mean_curve\", \"sd_curve\", \"kurt_curve\", \"skew_curve\", \"target\"])\r\n             },\r\n             axis=1, inplace=True)\r\n\r\nstars.loc[:, \"target\"] = stars.target.astype(bool)\r\n\r\n\r\n# In[25]:\r\n\r\n\r\nstars.head()\r\n\r\n\r\n# ## Inicie sua análise da parte 2 a partir daqui\r\n\r\n# In[26]:\r\n\r\n\r\n# Sua análise da parte 2 começa aqui.\r\n\r\n\r\n# ## Questão 4\r\n# \r\n# Considerando a variável `mean_profile` de `stars`:\r\n# \r\n# 1. Filtre apenas os valores de `mean_profile` onde `target == 0` (ou seja, onde a estrela não é um pulsar).\r\n# 2. Padronize a variável `mean_profile` filtrada anteriormente para ter média 0 e variância 1.\r\n# \r\n# Chamaremos a variável resultante de `false_pulsar_mean_profile_standardized`.\r\n# \r\n# Encontre os quantis teóricos para uma distribuição normal de média 0 e variância 1 para 0.80, 0.90 e 0.95 através da função `norm.ppf()` disponível em `scipy.stats`.\r\n# \r\n# Quais as probabilidade associadas a esses quantis utilizando a CDF empírica da variável `false_pulsar_mean_profile_standardized`? Responda como uma tupla de três elementos arredondados para três casas decimais.\r\n\r\n# In[27]:\r\n\r\n\r\ndef q4():\r\n    # Retorne aqui o resultado da questão 4.\r\n    no_pulsar = stars.mean_profile[stars.target==0]\r\n    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\r\n    \r\n    #Quantis teoricos para 0.80, 0.90 e 0.95\r\n    norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)\r\n    #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais\r\n    ecdf = ECDF(false_pulsar_mean_profile_standardized)\r\n    return tuple(ecdf(norm).round(3))\r\n    pass\r\n\r\n\r\n# Para refletir:\r\n# \r\n# * Os valores encontrados fazem sentido?\r\n# * O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\r\n\r\n# ## Questão 5\r\n# \r\n# Qual a diferença entre os quantis Q1, Q2 e Q3 de `false_pulsar_mean_profile_standardized` e os mesmos quantis teóricos de uma distribuição normal de média 0 e variância 1? Responda como uma tupla de três elementos arredondados para três casas decimais.\r\n\r\n# In[31]:\r\n\r\n\r\ndef q5():\r\n    # Retorne aqui o resultado da questão 5.\r\n    #Quartis teoricos de Q1, Q2 e Q3\r\n    teorico = sct.norm.ppf([0.25,0.5,0.75])\r\n    #Diferenca entre o dataframe padronizado e os quartis teoricos\r\n    no_pulsar = stars.mean_profile[stars.target==0]\r\n    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\r\n    result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico\r\n    return tuple(result.round(3))\r\n    pass\r\n\r\n\r\n# In[32]:\r\n\r\n\r\nq5()\r\n\r\n\r\n# Para refletir:\r\n# \r\n# * Os valores encontrados fazem sentido?\r\n# * O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\r\n# * Curiosidade: alguns testes de hipóteses sobre normalidade dos dados utilizam essa mesma abordagem.\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-1/main.py	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-1/main.py	(date 1589051890478)
+@@ -14,7 +14,7 @@
+ 
+ # ## _Setup_ geral
+ 
+-# In[15]:
++# In[17]:
+ 
+ 
+ import pandas as pd
+@@ -25,7 +25,7 @@
+ from statsmodels.distributions.empirical_distribution import ECDF
+ 
+ 
+-# In[16]:
++# In[18]:
+ 
+ 
+ #%matplotlib inline
+@@ -42,7 +42,7 @@
+ 
+ # ### _Setup_ da parte 1
+ 
+-# In[17]:
++# In[19]:
+ 
+ 
+ np.random.seed(42)
+@@ -53,7 +53,7 @@
+ 
+ # ## Inicie sua análise a partir da parte 1 a partir daqui
+ 
+-# In[18]:
++# In[20]:
+ 
+ 
+ # Sua análise da parte 1 começa aqui.
+@@ -66,7 +66,7 @@
+ # 
+ # Em outra palavras, sejam `q1_norm`, `q2_norm` e `q3_norm` os quantis da variável `normal` e `q1_binom`, `q2_binom` e `q3_binom` os quantis da variável `binom`, qual a diferença `(q1_norm - q1 binom, q2_norm - q2_binom, q3_norm - q3_binom)`?
+ 
+-# In[19]:
++# In[21]:
+ 
+ 
+ def q1():
+@@ -74,10 +74,9 @@
+     quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])
+     quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])
+     return tuple((quartis_norm - quartis_binom).round(3))
+-    pass
+ 
+ 
+-# In[20]:
++# In[22]:
+ 
+ 
+ q1()
+@@ -93,7 +92,7 @@
+ # 
+ # Considere o intervalo $[\bar{x} - s, \bar{x} + s]$, onde $\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.
+ 
+-# In[29]:
++# In[23]:
+ 
+ 
+ def q2():
+@@ -108,7 +107,6 @@
+ 
+     result = round(ecdf(max_value) - ecdf(min_value),3)
+     return float(result)
+-    pass
+ 
+ 
+ # Para refletir:
+@@ -122,7 +120,7 @@
+ # 
+ # Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?
+ 
+-# In[22]:
++# In[24]:
+ 
+ 
+ def q3():
+@@ -131,10 +129,9 @@
+     varianc = dataframe.binomial.var() - dataframe.normal.var()
+     result = (round(media, 3), round(varianc,3))
+     return result
+-    pass
+ 
+ 
+-# In[23]:
++# In[25]:
+ 
+ 
+ q3()
+@@ -149,7 +146,7 @@
+ 
+ # ### _Setup_ da parte 2
+ 
+-# In[24]:
++# In[26]:
+ 
+ 
+ stars = pd.read_csv("pulsar_stars.csv")
+@@ -164,7 +161,7 @@
+ stars.loc[:, "target"] = stars.target.astype(bool)
+ 
+ 
+-# In[25]:
++# In[27]:
+ 
+ 
+ stars.head()
+@@ -172,7 +169,7 @@
+ 
+ # ## Inicie sua análise da parte 2 a partir daqui
+ 
+-# In[26]:
++# In[28]:
+ 
+ 
+ # Sua análise da parte 2 começa aqui.
+@@ -191,20 +188,20 @@
+ # 
+ # Quais as probabilidade associadas a esses quantis utilizando a CDF empírica da variável `false_pulsar_mean_profile_standardized`? Responda como uma tupla de três elementos arredondados para três casas decimais.
+ 
+-# In[27]:
++# In[29]:
+ 
+ 
+ def q4():
+     # Retorne aqui o resultado da questão 4.
+     no_pulsar = stars.mean_profile[stars.target==0]
+-    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()
++    #false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()
++    false_pulsar_mean_profile_standardized = sct.zscore(no_pulsar)
+     
+     #Quantis teoricos para 0.80, 0.90 e 0.95
+     norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)
+     #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais
+     ecdf = ECDF(false_pulsar_mean_profile_standardized)
+     return tuple(ecdf(norm).round(3))
+-    pass
+ 
+ 
+ # Para refletir:
+@@ -216,7 +213,7 @@
+ # 
+ # Qual a diferença entre os quantis Q1, Q2 e Q3 de `false_pulsar_mean_profile_standardized` e os mesmos quantis teóricos de uma distribuição normal de média 0 e variância 1? Responda como uma tupla de três elementos arredondados para três casas decimais.
+ 
+-# In[31]:
++# In[30]:
+ 
+ 
+ def q5():
+@@ -228,10 +225,9 @@
+     false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()
+     result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico
+     return tuple(result.round(3))
+-    pass
+ 
+ 
+-# In[32]:
++# In[31]:
+ 
+ 
+ q5()
+Index: ../data-science-1/main.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n \"cells\": [\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"# Desafio 3\\n\",\r\n    \"\\n\",\r\n    \"Neste desafio, iremos praticar nossos conhecimentos sobre distribuições de probabilidade. Para isso,\\n\",\r\n    \"dividiremos este desafio em duas partes:\\n\",\r\n    \"    \\n\",\r\n    \"1. A primeira parte contará com 3 questões sobre um *data set* artificial com dados de uma amostra normal e\\n\",\r\n    \"    uma binomial.\\n\",\r\n    \"2. A segunda parte será sobre a análise da distribuição de uma variável do _data set_ [Pulsar Star](https://archive.ics.uci.edu/ml/datasets/HTRU2), contendo 2 questões.\\n\",\r\n    \"\\n\",\r\n    \"> Obs.: Por favor, não modifique o nome das funções de resposta.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## _Setup_ geral\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 15,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"import pandas as pd\\n\",\r\n    \"import matplotlib.pyplot as plt\\n\",\r\n    \"import numpy as np\\n\",\r\n    \"import scipy.stats as sct\\n\",\r\n    \"import seaborn as sns\\n\",\r\n    \"from statsmodels.distributions.empirical_distribution import ECDF\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 16,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"#%matplotlib inline\\n\",\r\n    \"\\n\",\r\n    \"from IPython.core.pylabtools import figsize\\n\",\r\n    \"\\n\",\r\n    \"\\n\",\r\n    \"figsize(12, 8)\\n\",\r\n    \"\\n\",\r\n    \"sns.set()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Parte 1\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"### _Setup_ da parte 1\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 17,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"np.random.seed(42)\\n\",\r\n    \"    \\n\",\r\n    \"dataframe = pd.DataFrame({\\\"normal\\\": sct.norm.rvs(20, 4, size=10000),\\n\",\r\n    \"                     \\\"binomial\\\": sct.binom.rvs(100, 0.2, size=10000)})\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise a partir da parte 1 a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 18,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>normal</th>\\n\",\r\n       \"      <th>binomial</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>21.986857</td>\\n\",\r\n       \"      <td>18</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>19.446943</td>\\n\",\r\n       \"      <td>15</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>22.590754</td>\\n\",\r\n       \"      <td>14</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>26.092119</td>\\n\",\r\n       \"      <td>15</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>19.063387</td>\\n\",\r\n       \"      <td>21</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"      normal  binomial\\n\",\r\n       \"0  21.986857        18\\n\",\r\n       \"1  19.446943        15\\n\",\r\n       \"2  22.590754        14\\n\",\r\n       \"3  26.092119        15\\n\",\r\n       \"4  19.063387        21\"\r\n      ]\r\n     },\r\n     \"execution_count\": 18,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"# Sua análise da parte 1 começa aqui.\\n\",\r\n    \"dataframe.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 1\\n\",\r\n    \"\\n\",\r\n    \"Qual a diferença entre os quartis (Q1, Q2 e Q3) das variáveis `normal` e `binomial` de `dataframe`? Responda como uma tupla de três elementos arredondados para três casas decimais.\\n\",\r\n    \"\\n\",\r\n    \"Em outra palavras, sejam `q1_norm`, `q2_norm` e `q3_norm` os quantis da variável `normal` e `q1_binom`, `q2_binom` e `q3_binom` os quantis da variável `binom`, qual a diferença `(q1_norm - q1 binom, q2_norm - q2_binom, q3_norm - q3_binom)`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 19,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q1():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 1.\\n\",\r\n    \"    quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])\\n\",\r\n    \"    quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])\\n\",\r\n    \"    return tuple((quartis_norm - quartis_binom).round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 20,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.31, -0.01, -0.316)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 20,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q1()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Você esperava valores dessa magnitude?\\n\",\r\n    \"\\n\",\r\n    \"* Você é capaz de explicar como distribuições aparentemente tão diferentes (discreta e contínua, por exemplo) conseguem dar esses valores?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 2\\n\",\r\n    \"\\n\",\r\n    \"Considere o intervalo $[\\\\bar{x} - s, \\\\bar{x} + s]$, onde $\\\\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 29,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q2():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 2.\\n\",\r\n    \"    ecdf = ECDF(dataframe.normal)\\n\",\r\n    \"\\n\",\r\n    \"    media = dataframe.normal.mean()\\n\",\r\n    \"    dev_padrao = dataframe.normal.std()\\n\",\r\n    \"\\n\",\r\n    \"    min_value = media - dev_padrao\\n\",\r\n    \"    max_value = media + dev_padrao\\n\",\r\n    \"\\n\",\r\n    \"    result = round(ecdf(max_value) - ecdf(min_value),3)\\n\",\r\n    \"    return float(result)\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Esse valor se aproxima do esperado teórico?\\n\",\r\n    \"* Experimente também para os intervalos $[\\\\bar{x} - 2s, \\\\bar{x} + 2s]$ e $[\\\\bar{x} - 3s, \\\\bar{x} + 3s]$.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 3\\n\",\r\n    \"\\n\",\r\n    \"Qual é a diferença entre as médias e as variâncias das variáveis `binomial` e `normal`? Responda como uma tupla de dois elementos arredondados para três casas decimais.\\n\",\r\n    \"\\n\",\r\n    \"Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 22,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q3():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 3.\\n\",\r\n    \"    media  = dataframe.binomial.mean() - dataframe.normal.mean()\\n\",\r\n    \"    varianc = dataframe.binomial.var() - dataframe.normal.var()\\n\",\r\n    \"    result = (round(media, 3), round(varianc,3))\\n\",\r\n    \"    return result\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 23,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.106, 0.22)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 23,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q3()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Você esperava valore dessa magnitude?\\n\",\r\n    \"* Qual o efeito de aumentar ou diminuir $n$ (atualmente 100) na distribuição da variável `binomial`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Parte 2\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"### _Setup_ da parte 2\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 24,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"stars = pd.read_csv(\\\"pulsar_stars.csv\\\")\\n\",\r\n    \"\\n\",\r\n    \"stars.rename({old_name: new_name\\n\",\r\n    \"              for (old_name, new_name)\\n\",\r\n    \"              in zip(stars.columns,\\n\",\r\n    \"                     [\\\"mean_profile\\\", \\\"sd_profile\\\", \\\"kurt_profile\\\", \\\"skew_profile\\\", \\\"mean_curve\\\", \\\"sd_curve\\\", \\\"kurt_curve\\\", \\\"skew_curve\\\", \\\"target\\\"])\\n\",\r\n    \"             },\\n\",\r\n    \"             axis=1, inplace=True)\\n\",\r\n    \"\\n\",\r\n    \"stars.loc[:, \\\"target\\\"] = stars.target.astype(bool)\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 25,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>mean_profile</th>\\n\",\r\n       \"      <th>sd_profile</th>\\n\",\r\n       \"      <th>kurt_profile</th>\\n\",\r\n       \"      <th>skew_profile</th>\\n\",\r\n       \"      <th>mean_curve</th>\\n\",\r\n       \"      <th>sd_curve</th>\\n\",\r\n       \"      <th>kurt_curve</th>\\n\",\r\n       \"      <th>skew_curve</th>\\n\",\r\n       \"      <th>target</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>102.507812</td>\\n\",\r\n       \"      <td>58.882430</td>\\n\",\r\n       \"      <td>0.465318</td>\\n\",\r\n       \"      <td>-0.515088</td>\\n\",\r\n       \"      <td>1.677258</td>\\n\",\r\n       \"      <td>14.860146</td>\\n\",\r\n       \"      <td>10.576487</td>\\n\",\r\n       \"      <td>127.393580</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>103.015625</td>\\n\",\r\n       \"      <td>39.341649</td>\\n\",\r\n       \"      <td>0.323328</td>\\n\",\r\n       \"      <td>1.051164</td>\\n\",\r\n       \"      <td>3.121237</td>\\n\",\r\n       \"      <td>21.744669</td>\\n\",\r\n       \"      <td>7.735822</td>\\n\",\r\n       \"      <td>63.171909</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>136.750000</td>\\n\",\r\n       \"      <td>57.178449</td>\\n\",\r\n       \"      <td>-0.068415</td>\\n\",\r\n       \"      <td>-0.636238</td>\\n\",\r\n       \"      <td>3.642977</td>\\n\",\r\n       \"      <td>20.959280</td>\\n\",\r\n       \"      <td>6.896499</td>\\n\",\r\n       \"      <td>53.593661</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>88.726562</td>\\n\",\r\n       \"      <td>40.672225</td>\\n\",\r\n       \"      <td>0.600866</td>\\n\",\r\n       \"      <td>1.123492</td>\\n\",\r\n       \"      <td>1.178930</td>\\n\",\r\n       \"      <td>11.468720</td>\\n\",\r\n       \"      <td>14.269573</td>\\n\",\r\n       \"      <td>252.567306</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>93.570312</td>\\n\",\r\n       \"      <td>46.698114</td>\\n\",\r\n       \"      <td>0.531905</td>\\n\",\r\n       \"      <td>0.416721</td>\\n\",\r\n       \"      <td>1.636288</td>\\n\",\r\n       \"      <td>14.545074</td>\\n\",\r\n       \"      <td>10.621748</td>\\n\",\r\n       \"      <td>131.394004</td>\\n\",\r\n       \"      <td>False</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"   mean_profile  sd_profile  kurt_profile  skew_profile  mean_curve  \\\\\\n\",\r\n       \"0    102.507812   58.882430      0.465318     -0.515088    1.677258   \\n\",\r\n       \"1    103.015625   39.341649      0.323328      1.051164    3.121237   \\n\",\r\n       \"2    136.750000   57.178449     -0.068415     -0.636238    3.642977   \\n\",\r\n       \"3     88.726562   40.672225      0.600866      1.123492    1.178930   \\n\",\r\n       \"4     93.570312   46.698114      0.531905      0.416721    1.636288   \\n\",\r\n       \"\\n\",\r\n       \"    sd_curve  kurt_curve  skew_curve  target  \\n\",\r\n       \"0  14.860146   10.576487  127.393580   False  \\n\",\r\n       \"1  21.744669    7.735822   63.171909   False  \\n\",\r\n       \"2  20.959280    6.896499   53.593661   False  \\n\",\r\n       \"3  11.468720   14.269573  252.567306   False  \\n\",\r\n       \"4  14.545074   10.621748  131.394004   False  \"\r\n      ]\r\n     },\r\n     \"execution_count\": 25,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"stars.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise da parte 2 a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 26,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"# Sua análise da parte 2 começa aqui.\\n\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 4\\n\",\r\n    \"\\n\",\r\n    \"Considerando a variável `mean_profile` de `stars`:\\n\",\r\n    \"\\n\",\r\n    \"1. Filtre apenas os valores de `mean_profile` onde `target == 0` (ou seja, onde a estrela não é um pulsar).\\n\",\r\n    \"2. Padronize a variável `mean_profile` filtrada anteriormente para ter média 0 e variância 1.\\n\",\r\n    \"\\n\",\r\n    \"Chamaremos a variável resultante de `false_pulsar_mean_profile_standardized`.\\n\",\r\n    \"\\n\",\r\n    \"Encontre os quantis teóricos para uma distribuição normal de média 0 e variância 1 para 0.80, 0.90 e 0.95 através da função `norm.ppf()` disponível em `scipy.stats`.\\n\",\r\n    \"\\n\",\r\n    \"Quais as probabilidade associadas a esses quantis utilizando a CDF empírica da variável `false_pulsar_mean_profile_standardized`? Responda como uma tupla de três elementos arredondados para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 27,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q4():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 4.\\n\",\r\n    \"    no_pulsar = stars.mean_profile[stars.target==0]\\n\",\r\n    \"    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\\n\",\r\n    \"    \\n\",\r\n    \"    #Quantis teoricos para 0.80, 0.90 e 0.95\\n\",\r\n    \"    norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)\\n\",\r\n    \"    #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais\\n\",\r\n    \"    ecdf = ECDF(false_pulsar_mean_profile_standardized)\\n\",\r\n    \"    return tuple(ecdf(norm).round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Os valores encontrados fazem sentido?\\n\",\r\n    \"* O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 5\\n\",\r\n    \"\\n\",\r\n    \"Qual a diferença entre os quantis Q1, Q2 e Q3 de `false_pulsar_mean_profile_standardized` e os mesmos quantis teóricos de uma distribuição normal de média 0 e variância 1? Responda como uma tupla de três elementos arredondados para três casas decimais.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 31,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 5.\\n\",\r\n    \"    #Quartis teoricos de Q1, Q2 e Q3\\n\",\r\n    \"    teorico = sct.norm.ppf([0.25,0.5,0.75])\\n\",\r\n    \"    #Diferenca entre o dataframe padronizado e os quartis teoricos\\n\",\r\n    \"    no_pulsar = stars.mean_profile[stars.target==0]\\n\",\r\n    \"    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\\n\",\r\n    \"    result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico\\n\",\r\n    \"    return tuple(result.round(3))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 32,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"(0.027, 0.04, -0.004)\"\r\n      ]\r\n     },\r\n     \"execution_count\": 32,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"q5()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"Para refletir:\\n\",\r\n    \"\\n\",\r\n    \"* Os valores encontrados fazem sentido?\\n\",\r\n    \"* O que isso pode dizer sobre a distribuição da variável `false_pulsar_mean_profile_standardized`?\\n\",\r\n    \"* Curiosidade: alguns testes de hipóteses sobre normalidade dos dados utilizam essa mesma abordagem.\"\r\n   ]\r\n  }\r\n ],\r\n \"metadata\": {\r\n  \"kernelspec\": {\r\n   \"display_name\": \"Python 3\",\r\n   \"language\": \"python\",\r\n   \"name\": \"python3\"\r\n  },\r\n  \"language_info\": {\r\n   \"codemirror_mode\": {\r\n    \"name\": \"ipython\",\r\n    \"version\": 3\r\n   },\r\n   \"file_extension\": \".py\",\r\n   \"mimetype\": \"text/x-python\",\r\n   \"name\": \"python\",\r\n   \"nbconvert_exporter\": \"python\",\r\n   \"pygments_lexer\": \"ipython3\",\r\n   \"version\": \"3.7.6\"\r\n  }\r\n },\r\n \"nbformat\": 4,\r\n \"nbformat_minor\": 2\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-1/main.ipynb	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-1/main.ipynb	(date 1589051803526)
+@@ -25,7 +25,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 15,
++   "execution_count": 17,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -39,7 +39,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 16,
++   "execution_count": 18,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -69,7 +69,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 17,
++   "execution_count": 19,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -88,7 +88,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 18,
++   "execution_count": 20,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -155,7 +155,7 @@
+        "4  19.063387        21"
+       ]
+      },
+-     "execution_count": 18,
++     "execution_count": 20,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -178,7 +178,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 19,
++   "execution_count": 21,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -186,13 +186,12 @@
+     "    # Retorne aqui o resultado da questão 1.\n",
+     "    quartis_norm = np.quantile(dataframe.normal, [0.25, 0.5, 0.75])\n",
+     "    quartis_binom = np.quantile(dataframe.binomial, [0.25, 0.5, 0.75])\n",
+-    "    return tuple((quartis_norm - quartis_binom).round(3))\n",
+-    "    pass"
++    "    return tuple((quartis_norm - quartis_binom).round(3))"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 20,
++   "execution_count": 22,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -201,7 +200,7 @@
+        "(0.31, -0.01, -0.316)"
+       ]
+      },
+-     "execution_count": 20,
++     "execution_count": 22,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -232,7 +231,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 29,
++   "execution_count": 23,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -247,8 +246,7 @@
+     "    max_value = media + dev_padrao\n",
+     "\n",
+     "    result = round(ecdf(max_value) - ecdf(min_value),3)\n",
+-    "    return float(result)\n",
+-    "    pass"
++    "    return float(result)"
+    ]
+   },
+   {
+@@ -274,7 +272,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 22,
++   "execution_count": 24,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -283,13 +281,12 @@
+     "    media  = dataframe.binomial.mean() - dataframe.normal.mean()\n",
+     "    varianc = dataframe.binomial.var() - dataframe.normal.var()\n",
+     "    result = (round(media, 3), round(varianc,3))\n",
+-    "    return result\n",
+-    "    pass"
++    "    return result"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 23,
++   "execution_count": 25,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -298,7 +295,7 @@
+        "(0.106, 0.22)"
+       ]
+      },
+-     "execution_count": 23,
++     "execution_count": 25,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -333,7 +330,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 24,
++   "execution_count": 26,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -351,7 +348,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 25,
++   "execution_count": 27,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -467,7 +464,7 @@
+        "4  14.545074   10.621748  131.394004   False  "
+       ]
+      },
+-     "execution_count": 25,
++     "execution_count": 27,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -485,7 +482,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 26,
++   "execution_count": 28,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -512,21 +509,21 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 27,
++   "execution_count": 29,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q4():\n",
+     "    # Retorne aqui o resultado da questão 4.\n",
+     "    no_pulsar = stars.mean_profile[stars.target==0]\n",
+-    "    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
++    "    #false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
++    "    false_pulsar_mean_profile_standardized = sct.zscore(no_pulsar)\n",
+     "    \n",
+     "    #Quantis teoricos para 0.80, 0.90 e 0.95\n",
+     "    norm = sct.norm.ppf([0.80, 0.90, 0.95], loc=0, scale=1)\n",
+     "    #Probabilidade associados aos quantis nos dados padronizados arredondados com 3 casas decimais\n",
+     "    ecdf = ECDF(false_pulsar_mean_profile_standardized)\n",
+-    "    return tuple(ecdf(norm).round(3))\n",
+-    "    pass"
++    "    return tuple(ecdf(norm).round(3))"
+    ]
+   },
+   {
+@@ -550,7 +547,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 31,
++   "execution_count": 30,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -562,13 +559,12 @@
+     "    no_pulsar = stars.mean_profile[stars.target==0]\n",
+     "    false_pulsar_mean_profile_standardized = (no_pulsar - no_pulsar.mean())/no_pulsar.std()\n",
+     "    result =  np.quantile(false_pulsar_mean_profile_standardized, [0.25,0.5,0.75]) - teorico\n",
+-    "    return tuple(result.round(3))\n",
+-    "    pass"
++    "    return tuple(result.round(3))"
+    ]
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 32,
++   "execution_count": 31,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -577,7 +573,7 @@
+        "(0.027, 0.04, -0.004)"
+       ]
+      },
+-     "execution_count": 32,
++     "execution_count": 31,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+Index: ../data-science-1/stdout.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>============================= test session starts =============================\r\nplatform win32 -- Python 3.7.6, pytest-5.3.5, py-1.8.1, pluggy-0.13.1 -- E:\\Junior\\Anaconda\\python.exe\r\ncachedir: .pytest_cache\r\nhypothesis profile 'default' -> database=DirectoryBasedExampleDatabase('C:\\\\Users\\\\Junior\\\\codenation\\\\data-science-1\\\\.hypothesis\\\\examples')\r\nrootdir: C:\\Users\\Junior\\codenation\\data-science-1\r\nplugins: hypothesis-5.5.4, arraydiff-0.3, astropy-header-0.1.2, doctestplus-0.5.0, openfiles-0.4.0, remotedata-0.3.2\r\ncollecting ... collected 5 items\r\n\r\ntest_submit.py::test_q1 PASSED                                           [ 20%]\r\ntest_submit.py::test_q2 PASSED                                           [ 40%]\r\ntest_submit.py::test_q3 PASSED                                           [ 60%]\r\ntest_submit.py::test_q4 PASSED                                           [ 80%]\r\ntest_submit.py::test_q5 PASSED                                           [100%]\r\n\r\n============================== warnings summary ===============================\r\nE:\\Junior\\Anaconda\\lib\\site-packages\\_pytest\\junitxml.py:436\r\n  E:\\Junior\\Anaconda\\lib\\site-packages\\_pytest\\junitxml.py:436: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0.\r\n  Add 'junit_family=xunit1' to your pytest.ini file to keep the current format in future versions of pytest and silence this warning.\r\n    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)\r\n\r\n-- Docs: https://docs.pytest.org/en/latest/warnings.html\r\n-- generated xml file: C:\\Users\\Junior\\codenation\\data-science-1\\output.xml ---\r\n======================== 5 passed, 1 warning in 1.40s =========================\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-1/stdout.txt	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-1/stdout.txt	(date 1589051895171)
+@@ -20,4 +20,4 @@
+ 
+ -- Docs: https://docs.pytest.org/en/latest/warnings.html
+ -- generated xml file: C:\Users\Junior\codenation\data-science-1\output.xml ---
+-======================== 5 passed, 1 warning in 1.40s =========================
++======================== 5 passed, 1 warning in 3.41s =========================
+Index: ../data-science-0/.ipynb_checkpoints/main-checkpoint.ipynb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n \"cells\": [\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"# Desafio 1\\n\",\r\n    \"\\n\",\r\n    \"Para esse desafio, vamos trabalhar com o data set [Black Friday](https://www.kaggle.com/mehdidag/black-friday), que reúne dados sobre transações de compras em uma loja de varejo.\\n\",\r\n    \"\\n\",\r\n    \"Vamos utilizá-lo para praticar a exploração de data sets utilizando pandas. Você pode fazer toda análise neste mesmo notebook, mas as resposta devem estar nos locais indicados.\\n\",\r\n    \"\\n\",\r\n    \"> Obs.: Por favor, não modifique o nome das funções de resposta.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## _Set up_ da análise\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 1,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"import pandas as pd\\n\",\r\n    \"import numpy as np\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 2,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"black_friday = pd.read_csv(\\\"black_friday.csv\\\")\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Inicie sua análise a partir daqui\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 3,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/html\": [\r\n       \"<div>\\n\",\r\n       \"<style scoped>\\n\",\r\n       \"    .dataframe tbody tr th:only-of-type {\\n\",\r\n       \"        vertical-align: middle;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe tbody tr th {\\n\",\r\n       \"        vertical-align: top;\\n\",\r\n       \"    }\\n\",\r\n       \"\\n\",\r\n       \"    .dataframe thead th {\\n\",\r\n       \"        text-align: right;\\n\",\r\n       \"    }\\n\",\r\n       \"</style>\\n\",\r\n       \"<table border=\\\"1\\\" class=\\\"dataframe\\\">\\n\",\r\n       \"  <thead>\\n\",\r\n       \"    <tr style=\\\"text-align: right;\\\">\\n\",\r\n       \"      <th></th>\\n\",\r\n       \"      <th>User_ID</th>\\n\",\r\n       \"      <th>Product_ID</th>\\n\",\r\n       \"      <th>Gender</th>\\n\",\r\n       \"      <th>Age</th>\\n\",\r\n       \"      <th>Occupation</th>\\n\",\r\n       \"      <th>City_Category</th>\\n\",\r\n       \"      <th>Stay_In_Current_City_Years</th>\\n\",\r\n       \"      <th>Marital_Status</th>\\n\",\r\n       \"      <th>Product_Category_1</th>\\n\",\r\n       \"      <th>Product_Category_2</th>\\n\",\r\n       \"      <th>Product_Category_3</th>\\n\",\r\n       \"      <th>Purchase</th>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </thead>\\n\",\r\n       \"  <tbody>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>0</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00069042</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>3</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>8370</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>1</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00248942</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>1</td>\\n\",\r\n       \"      <td>6.0</td>\\n\",\r\n       \"      <td>14.0</td>\\n\",\r\n       \"      <td>15200</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>2</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00087842</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>12</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>1422</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>3</th>\\n\",\r\n       \"      <td>1000001</td>\\n\",\r\n       \"      <td>P00085442</td>\\n\",\r\n       \"      <td>F</td>\\n\",\r\n       \"      <td>0-17</td>\\n\",\r\n       \"      <td>10</td>\\n\",\r\n       \"      <td>A</td>\\n\",\r\n       \"      <td>2</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>12</td>\\n\",\r\n       \"      <td>14.0</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>1057</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"    <tr>\\n\",\r\n       \"      <th>4</th>\\n\",\r\n       \"      <td>1000002</td>\\n\",\r\n       \"      <td>P00285442</td>\\n\",\r\n       \"      <td>M</td>\\n\",\r\n       \"      <td>55+</td>\\n\",\r\n       \"      <td>16</td>\\n\",\r\n       \"      <td>C</td>\\n\",\r\n       \"      <td>4+</td>\\n\",\r\n       \"      <td>0</td>\\n\",\r\n       \"      <td>8</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>NaN</td>\\n\",\r\n       \"      <td>7969</td>\\n\",\r\n       \"    </tr>\\n\",\r\n       \"  </tbody>\\n\",\r\n       \"</table>\\n\",\r\n       \"</div>\"\r\n      ],\r\n      \"text/plain\": [\r\n       \"   User_ID Product_ID Gender   Age  Occupation City_Category  \\\\\\n\",\r\n       \"0  1000001  P00069042      F  0-17          10             A   \\n\",\r\n       \"1  1000001  P00248942      F  0-17          10             A   \\n\",\r\n       \"2  1000001  P00087842      F  0-17          10             A   \\n\",\r\n       \"3  1000001  P00085442      F  0-17          10             A   \\n\",\r\n       \"4  1000002  P00285442      M   55+          16             C   \\n\",\r\n       \"\\n\",\r\n       \"  Stay_In_Current_City_Years  Marital_Status  Product_Category_1  \\\\\\n\",\r\n       \"0                          2               0                   3   \\n\",\r\n       \"1                          2               0                   1   \\n\",\r\n       \"2                          2               0                  12   \\n\",\r\n       \"3                          2               0                  12   \\n\",\r\n       \"4                         4+               0                   8   \\n\",\r\n       \"\\n\",\r\n       \"   Product_Category_2  Product_Category_3  Purchase  \\n\",\r\n       \"0                 NaN                 NaN      8370  \\n\",\r\n       \"1                 6.0                14.0     15200  \\n\",\r\n       \"2                 NaN                 NaN      1422  \\n\",\r\n       \"3                14.0                 NaN      1057  \\n\",\r\n       \"4                 NaN                 NaN      7969  \"\r\n      ]\r\n     },\r\n     \"execution_count\": 3,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"black_friday.head()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 4,\r\n   \"metadata\": {},\r\n   \"outputs\": [\r\n    {\r\n     \"data\": {\r\n      \"text/plain\": [\r\n       \"User_ID                            0\\n\",\r\n       \"Product_ID                         0\\n\",\r\n       \"Gender                             0\\n\",\r\n       \"Age                                0\\n\",\r\n       \"Occupation                         0\\n\",\r\n       \"City_Category                      0\\n\",\r\n       \"Stay_In_Current_City_Years         0\\n\",\r\n       \"Marital_Status                     0\\n\",\r\n       \"Product_Category_1                 0\\n\",\r\n       \"Product_Category_2            166986\\n\",\r\n       \"Product_Category_3            373299\\n\",\r\n       \"Purchase                           0\\n\",\r\n       \"dtype: int64\"\r\n      ]\r\n     },\r\n     \"execution_count\": 4,\r\n     \"metadata\": {},\r\n     \"output_type\": \"execute_result\"\r\n    }\r\n   ],\r\n   \"source\": [\r\n    \"black_friday.isna().sum()\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 1\\n\",\r\n    \"\\n\",\r\n    \"Quantas observações e quantas colunas há no dataset? Responda no formato de uma tuple `(n_observacoes, n_colunas)`.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 5,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q1():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 1.\\n\",\r\n    \"    return black_friday.shape\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 2\\n\",\r\n    \"\\n\",\r\n    \"Há quantas mulheres com idade entre 26 e 35 anos no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 6,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q2():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 2.\\n\",\r\n    \"    return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 3\\n\",\r\n    \"\\n\",\r\n    \"Quantos usuários únicos há no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 7,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q3():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 3.\\n\",\r\n    \"    return black_friday.User_ID.nunique()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 4\\n\",\r\n    \"\\n\",\r\n    \"Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 8,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q4():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 4.\\n\",\r\n    \"    return black_friday.dtypes.nunique()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 5\\n\",\r\n    \"\\n\",\r\n    \"Qual porcentagem dos registros possui ao menos um valor null (`None`, `ǸaN` etc)? Responda como um único escalar entre 0 e 1.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 9,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 5.\\n\",\r\n    \"    return float(black_friday.isna().any(axis=1).sum()/len(black_friday))\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"def q5():\\n\",\r\n    \"    return float(black_friday[black_friday.isna().any(axis=1) == True].shape[0]/black_friday.shape[0])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 6\\n\",\r\n    \"\\n\",\r\n    \"Quantos valores null existem na variável (coluna) com o maior número de null? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 10,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q6():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 6.\\n\",\r\n    \"    return black_friday.isna().sum().max()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 7\\n\",\r\n    \"\\n\",\r\n    \"Qual o valor mais frequente (sem contar nulls) em `Product_Category_3`? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 11,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q7():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 7.\\n\",\r\n    \"    return black_friday.Product_Category_3.value_counts().idxmax()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 8\\n\",\r\n    \"\\n\",\r\n    \"Qual a nova média da variável (coluna) `Purchase` após sua normalização? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 12,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q8():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 8.\\n\",\r\n    \"    Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-\\n\",\r\n    \"                                                                          black_friday.Purchase.min())\\n\",\r\n    \"    return Purch_norm.mean()\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 9\\n\",\r\n    \"\\n\",\r\n    \"Quantas ocorrências entre -1 e 1 inclusive existem da variáel `Purchase` após sua padronização? Responda como um único escalar.\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 13,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q9():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 9.\\n\",\r\n    \"    black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()\\n\",\r\n    \"    return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])\\n\",\r\n    \"    pass\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"markdown\",\r\n   \"metadata\": {},\r\n   \"source\": [\r\n    \"## Questão 10\\n\",\r\n    \"\\n\",\r\n    \"Podemos afirmar que se uma observação é null em `Product_Category_2` ela também o é em `Product_Category_3`? Responda com um bool (`True`, `False`).\"\r\n   ]\r\n  },\r\n  {\r\n   \"cell_type\": \"code\",\r\n   \"execution_count\": 14,\r\n   \"metadata\": {},\r\n   \"outputs\": [],\r\n   \"source\": [\r\n    \"def q10():\\n\",\r\n    \"    # Retorne aqui o resultado da questão 10.\\n\",\r\n    \"    product_Data = black_friday[['Product_Category_2', 'Product_Category_3']]\\n\",\r\n    \"    product_Data = product_Data[product_Data.Product_Category_2.isna()==True]\\n\",\r\n    \"    cat_2 = product_Data.Product_Category_2.isna().sum()\\n\",\r\n    \"    cat_3 = product_Data.Product_Category_3.isna().sum()\\n\",\r\n    \"    if cat_2 == cat_3:\\n\",\r\n    \"        return True\\n\",\r\n    \"    else:\\n\",\r\n    \"        return False\\n\",\r\n    \"    \\n\",\r\n    \"    pass\"\r\n   ]\r\n  }\r\n ],\r\n \"metadata\": {\r\n  \"kernelspec\": {\r\n   \"display_name\": \"Python 3\",\r\n   \"language\": \"python\",\r\n   \"name\": \"python3\"\r\n  },\r\n  \"language_info\": {\r\n   \"codemirror_mode\": {\r\n    \"name\": \"ipython\",\r\n    \"version\": 3\r\n   },\r\n   \"file_extension\": \".py\",\r\n   \"mimetype\": \"text/x-python\",\r\n   \"name\": \"python\",\r\n   \"nbconvert_exporter\": \"python\",\r\n   \"pygments_lexer\": \"ipython3\",\r\n   \"version\": \"3.7.6\"\r\n  }\r\n },\r\n \"nbformat\": 4,\r\n \"nbformat_minor\": 2\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-0/.ipynb_checkpoints/main-checkpoint.ipynb	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-0/.ipynb_checkpoints/main-checkpoint.ipynb	(date 1589050771139)
+@@ -22,7 +22,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 1,
++   "execution_count": 19,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -32,7 +32,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 2,
++   "execution_count": 20,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -48,7 +48,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 3,
++   "execution_count": 21,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -189,7 +189,7 @@
+        "4                 NaN                 NaN      7969  "
+       ]
+      },
+-     "execution_count": 3,
++     "execution_count": 21,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -200,7 +200,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 4,
++   "execution_count": 22,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -221,7 +221,7 @@
+        "dtype: int64"
+       ]
+      },
+-     "execution_count": 4,
++     "execution_count": 22,
+      "metadata": {},
+      "output_type": "execute_result"
+     }
+@@ -241,14 +241,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 5,
++   "execution_count": 23,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q1():\n",
+     "    # Retorne aqui o resultado da questão 1.\n",
+     "    return black_friday.shape\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -262,14 +262,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 6,
++   "execution_count": 24,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q2():\n",
+     "    # Retorne aqui o resultado da questão 2.\n",
+     "    return len(black_friday.loc[(black_friday.Gender=='F') & (black_friday.Age=='26-35')])\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -283,14 +283,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 7,
++   "execution_count": 25,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q3():\n",
+     "    # Retorne aqui o resultado da questão 3.\n",
+     "    return black_friday.User_ID.nunique()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -304,14 +304,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 8,
++   "execution_count": 26,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q4():\n",
+     "    # Retorne aqui o resultado da questão 4.\n",
+     "    return black_friday.dtypes.nunique()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -325,14 +325,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 9,
++   "execution_count": 27,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q5():\n",
+     "    # Retorne aqui o resultado da questão 5.\n",
+     "    return float(black_friday.isna().any(axis=1).sum()/len(black_friday))\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -355,14 +355,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 10,
++   "execution_count": 28,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q6():\n",
+     "    # Retorne aqui o resultado da questão 6.\n",
+     "    return black_friday.isna().sum().max()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -376,14 +376,14 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 11,
++   "execution_count": 29,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def q7():\n",
+     "    # Retorne aqui o resultado da questão 7.\n",
+     "    return black_friday.Product_Category_3.value_counts().idxmax()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -397,7 +397,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 12,
++   "execution_count": 30,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -406,7 +406,7 @@
+     "    Purch_norm= (black_friday.Purchase-black_friday.Purchase.min()) / (black_friday.Purchase.max()-\n",
+     "                                                                          black_friday.Purchase.min())\n",
+     "    return Purch_norm.mean()\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -420,7 +420,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 13,
++   "execution_count": 31,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -428,7 +428,7 @@
+     "    # Retorne aqui o resultado da questão 9.\n",
+     "    black_friday['Purchase_padr']= (black_friday.Purchase - black_friday.Purchase.mean())/black_friday.Purchase.std()\n",
+     "    return len(black_friday[(black_friday.Purchase_padr>=-1) & (black_friday.Purchase_padr<=1)])\n",
+-    "    pass"
++    "    "
+    ]
+   },
+   {
+@@ -442,7 +442,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 14,
++   "execution_count": 32,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -457,7 +457,7 @@
+     "    else:\n",
+     "        return False\n",
+     "    \n",
+-    "    pass"
++    "    "
+    ]
+   }
+  ],
+Index: ../data-science-1/output.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites><testsuite errors=\"0\" failures=\"0\" hostname=\"DESKTOP-7GSFOHC\" name=\"pytest\" skipped=\"0\" tests=\"5\" time=\"1.407\" timestamp=\"2020-05-04T22:21:03.992643\"><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"3\" name=\"test_q1\" time=\"0.001\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"9\" name=\"test_q2\" time=\"0.003\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"15\" name=\"test_q3\" time=\"0.002\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"21\" name=\"test_q4\" time=\"0.003\"></testcase><testcase classname=\"test_submit\" file=\"test_submit.py\" line=\"27\" name=\"test_q5\" time=\"0.005\"></testcase></testsuite></testsuites>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../data-science-1/output.xml	(revision fe35db61e3dabd3602e2536ce9fe941f236d61b1)
++++ ../data-science-1/output.xml	(date 1589051894924)
+@@ -1,1 +1,1 @@
+-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-7GSFOHC" name="pytest" skipped="0" tests="5" time="1.407" timestamp="2020-05-04T22:21:03.992643"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.001"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.003"></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="21" name="test_q4" time="0.003"></testcase><testcase classname="test_submit" file="test_submit.py" line="27" name="test_q5" time="0.005"></testcase></testsuite></testsuites>
+\ No newline at end of file
++<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-7GSFOHC" name="pytest" skipped="0" tests="5" time="3.406" timestamp="2020-05-09T16:18:11.517131"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.001"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.001"></testcase><testcase classname="test_submit" file="test_submit.py" line="21" name="test_q4" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="27" name="test_q5" time="0.003"></testcase></testsuite></testsuites>
+\ No newline at end of file

@@ -1,0 +1,153 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]/shelved.patch	(date 1589502901656)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]/shelved.patch	(date 1589502901656)
+@@ -0,0 +1,55 @@
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"308b13b4-f3f9-4932-ae5d-6f9469eac181\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1bsP1pvvuQW5DRfriQi7FECJ62g\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"vcs.Git\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"python-5\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"308b13b4-f3f9-4932-ae5d-6f9469eac181\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1589417615885</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1589417615885</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"549\" y=\"167\" key=\"FileChooserDialogImpl\" timestamp=\"1589501915557\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"549\" y=\"167\" key=\"FileChooserDialogImpl/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501915557\" />\r\n    <state x=\"261\" y=\"96\" key=\"Git.Interactive.Rebase.Dialog\" timestamp=\"1589501983037\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"261\" y=\"96\" key=\"Git.Interactive.Rebase.Dialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501983037\" />\r\n    <state x=\"277\" y=\"57\" key=\"SettingsEditor\" timestamp=\"1589487898627\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"277\" y=\"57\" key=\"SettingsEditor/0.0.1536.824@0.0.1536.824\" timestamp=\"1589487898627\" />\r\n    <state x=\"531\" y=\"117\" key=\"VCS.ChangeListViewerDialog\" timestamp=\"1589501967273\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"531\" y=\"117\" key=\"VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501967273\" />\r\n    <state x=\"578\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1589502138215\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"578\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824\" timestamp=\"1589502138215\" />\r\n    <state x=\"574\" y=\"274\" key=\"git4idea.rebase.GitRebaseDialog\" timestamp=\"1589501969905\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"574\" y=\"274\" key=\"git4idea.rebase.GitRebaseDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501969905\" />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/workspace.xml	(revision 38228166c928cc41ef63686a690ebe5ee61cd5bf)
+++++ .idea/workspace.xml	(date 1589502817612)
++@@ -19,7 +19,7 @@
++     <select />
++   </component>
++   <component name="ChangeListManager">
++-    <list default="true" id="308b13b4-f3f9-4932-ae5d-6f9469eac181" name="Default Changelist" comment="" />
+++    <list default="true" id="308b13b4-f3f9-4932-ae5d-6f9469eac181" name="Default Changelist" comment="att_1" />
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++@@ -79,6 +79,14 @@
++       <option name="presentableId" value="Default" />
++       <updated>1589417615885</updated>
++     </task>
+++    <task id="LOCAL-00001" summary="att_1">
+++      <created>1589502677515</created>
+++      <option name="number" value="00001" />
+++      <option name="presentableId" value="LOCAL-00001" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1589502677515</updated>
+++    </task>
+++    <option name="localTasksCounter" value="2" />
++     <servers />
++   </component>
++   <component name="Vcs.Log.Tabs.Properties">
++@@ -92,6 +100,10 @@
++       </map>
++     </option>
++     <option name="oldMeFiltersMigrated" value="true" />
+++  </component>
+++  <component name="VcsManagerConfiguration">
+++    <MESSAGE value="att_1" />
+++    <option name="LAST_COMMIT_MESSAGE" value="att_1" />
++   </component>
++   <component name="WindowStateProjectService">
++     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589501915557">
++@@ -110,6 +122,10 @@
++       <screen x="0" y="0" width="1536" height="824" />
++     </state>
++     <state x="531" y="117" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1589501967273" />
+++    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589502745202">
+++      <screen x="0" y="0" width="1536" height="824" />
+++    </state>
+++    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589502745202" />
++     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589502138215">
++       <screen x="0" y="0" width="1536" height="824" />
++     </state>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"308b13b4-f3f9-4932-ae5d-6f9469eac181\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1bsP1pvvuQW5DRfriQi7FECJ62g\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"vcs.Git\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"python-5\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"true\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"308b13b4-f3f9-4932-ae5d-6f9469eac181\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1589417615885</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1589417615885</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"549\" y=\"167\" key=\"FileChooserDialogImpl\" timestamp=\"1589501915557\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"549\" y=\"167\" key=\"FileChooserDialogImpl/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501915557\" />\r\n    <state x=\"261\" y=\"96\" key=\"Git.Interactive.Rebase.Dialog\" timestamp=\"1589501983037\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"261\" y=\"96\" key=\"Git.Interactive.Rebase.Dialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501983037\" />\r\n    <state x=\"277\" y=\"57\" key=\"SettingsEditor\" timestamp=\"1589487898627\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"277\" y=\"57\" key=\"SettingsEditor/0.0.1536.824@0.0.1536.824\" timestamp=\"1589487898627\" />\r\n    <state x=\"531\" y=\"117\" key=\"VCS.ChangeListViewerDialog\" timestamp=\"1589501967273\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"531\" y=\"117\" key=\"VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501967273\" />\r\n    <state x=\"578\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1589502138215\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"578\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824\" timestamp=\"1589502138215\" />\r\n    <state x=\"574\" y=\"274\" key=\"git4idea.rebase.GitRebaseDialog\" timestamp=\"1589501969905\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"574\" y=\"274\" key=\"git4idea.rebase.GitRebaseDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1589501969905\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision de12d815a2e609c0ae996eba2b12540506d1ef4d)
++++ .idea/workspace.xml	(date 1589503586331)
+@@ -19,13 +19,18 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="308b13b4-f3f9-4932-ae5d-6f9469eac181" name="Default Changelist" comment="" />
++    <list default="true" id="308b13b4-f3f9-4932-ae5d-6f9469eac181" name="Default Changelist" comment="att_1">
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="PUSH_AUTO_UPDATE" value="true" />
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+   </component>
+   <component name="ProjectId" id="1bsP1pvvuQW5DRfriQi7FECJ62g" />
+@@ -79,6 +84,14 @@
+       <option name="presentableId" value="Default" />
+       <updated>1589417615885</updated>
+     </task>
++    <task id="LOCAL-00001" summary="att_1">
++      <created>1589502677515</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1589502677515</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -92,6 +105,10 @@
+       </map>
+     </option>
+     <option name="oldMeFiltersMigrated" value="true" />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="att_1" />
++    <option name="LAST_COMMIT_MESSAGE" value="att_1" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589501915557">
+@@ -102,6 +119,10 @@
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+     <state x="261" y="96" key="Git.Interactive.Rebase.Dialog/0.0.1536.824@0.0.1536.824" timestamp="1589501983037" />
++    <state x="450" y="115" key="RollbackChangesDialog" timestamp="1589503583666">
++      <screen x="0" y="0" width="1536" height="824" />
++    </state>
++    <state x="450" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589503583666" />
+     <state x="277" y="57" key="SettingsEditor" timestamp="1589487898627">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+@@ -110,6 +131,10 @@
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+     <state x="531" y="117" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1589501967273" />
++    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589502887826">
++      <screen x="0" y="0" width="1536" height="824" />
++    </state>
++    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589502887826" />
+     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589502138215">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35__Default_Changelist_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35__Default_Changelist_.xml	(date 1589502919703)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35__Default_Changelist_.xml	(date 1589502919703)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]" date="1589502902588" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_05_2020_21_35_[Default_Changelist]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14/05/2020 21:35 [Default Changelist]" />
++</changelist>
+\ No newline at end of file
